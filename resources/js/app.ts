@@ -45,7 +45,7 @@ createInertiaApp({
                 defaultTheme: "myCustomLightTheme",
                 themes: {
                     myCustomLightTheme,
-                },  
+                },
             },
             components,
             directives,
@@ -58,6 +58,7 @@ createInertiaApp({
             .mount(el);
     },
     progress: {
-        color: "#4B5563",
+        color: "#03DAC6",
+        delay: 250,
     },
 });

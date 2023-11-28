@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { Link } from "@inertiajs/vue3";
 import { useTheme } from "vuetify";
+import { ref } from "vue";
+
+const items = ref([
+    { title: "Click Me" },
+    { title: "Click Me" },
+    { title: "Click Me" },
+    { title: "Click Me 2" },
+]);
+
 const theme = useTheme();
 
 function toggleTheme() {
@@ -15,6 +24,7 @@ function toggleTheme() {
         <v-toolbar-title class="text-secondary">Anqas</v-toolbar-title>
 
         <v-spacer></v-spacer>
+      
         <template v-if="$page.props.auth.user">
             <v-btn icon>
                 <v-icon>mdi-magnify</v-icon>
@@ -23,10 +33,38 @@ function toggleTheme() {
             <v-btn icon>
                 <v-icon>mdi-heart</v-icon>
             </v-btn>
+           
+                <v-menu>
+                    <template v-slot:activator="{ props }">
+                        <v-btn icon="mdi-dots-vertical" v-bind="props"></v-btn>
+                    </template>
 
-            <v-btn icon>
-                <v-icon>mdi-dots-vertical</v-icon>
-            </v-btn>
+                    <v-list>
+                        <v-list-item>
+                            <v-list-item-title>
+                             <v-btn prepend-icon="mdi-logout" variant="text">
+                                  <Link
+                                    :href="route('logout')"
+                                    method="post"
+                                    as="button"
+                                    >Logout</Link
+                                >
+                              
+                              </v-btn>
+                                
+                            </v-list-item-title>
+                            <v-list-item-title>
+                           <v-btn
+           prepend-icon="mdi-theme-light-dark"
+            @click="toggleTheme"
+            variant="text"
+        > Theme</v-btn>
+                                
+                            </v-list-item-title>
+                        </v-list-item>
+                    </v-list>
+                </v-menu>
+          
         </template>
 
         <template v-else>
@@ -34,6 +72,5 @@ function toggleTheme() {
                 <Link :href="route('login')">Log in</Link>
             </v-btn>
         </template>
-        <v-btn icon="mdi-theme-light-dark" class="mr-5" @click="toggleTheme"></v-btn>
     </v-toolbar>
 </template>

@@ -22,7 +22,7 @@ const rail = ref(true);
                     <template v-if="$page.props.auth.user">
                         <v-list-item
                             prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
-                            title="John Leider"
+                            :title="$page.props.auth.user.name"
                             nav
                         >
                             <template v-slot:append>
@@ -72,7 +72,7 @@ const rail = ref(true);
                         ></v-list-item>
                     </v-list>
                 </v-navigation-drawer>
-                <v-main style="height: 250px"><slot> </slot></v-main>
+                <v-main ><slot> </slot></v-main>
             </v-layout>
         </v-card>
     </div>

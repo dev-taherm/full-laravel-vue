@@ -144,11 +144,11 @@ const userNavigation = [
                                 </Menu>
                             </template>
                             <template v-else>
-                                <button
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                                >
-                                 <Link :href="route('login')" >Login</Link>
-                                </button>
+                          
+                                   
+                                
+                                 <Link class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" :href="route('login')" >Login</Link>
+                              
                             </template>
                         </div>
                     </div>
